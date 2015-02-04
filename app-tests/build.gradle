@@ -1,0 +1,31 @@
+evaluationDependsOn(":app")
+
+apply plugin: 'java'
+
+dependencies {
+
+    def androidModule = project(':app')
+    compile project(path: ':app', configuration: 'debugCompile')
+    compile 'org.robolectric:robolectric:2.4'
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+
+    def debugVariant = androidModule.android.applicationVariants.find({it.name == 'debug'})
+    testCompile debugVariant.javaCompile.classpath
+    testCompile debugVariant.javaCompile.outputs.files
+    testCompile files(androidModule.plugins.findPlugin("com.android.application").getBootClasspath())
+
+
+	
+	/*
+	Note that Robolectric 2.4 and AppCompat v21 are not folly compatible with each other. This can cause random build failures
+	especially if the 'clean' command was used. See the known issues in the README.
+	*/
+}
+
+tasks.withType(Test) {
+    scanForTestClasses = false
+    include "**/*Should.class"
+    include "**/*Test.class"
+    include "**/*Tests.class"
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Dggr Couchbse Rblctrc</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="click_me">Click Me</string>
+    <string name="ok_thanks">OK Thanks!</string>
+    <string name="save">Save</string>
+    <string name="document_id">Document id goes here after save</string>
+
+</resources>
