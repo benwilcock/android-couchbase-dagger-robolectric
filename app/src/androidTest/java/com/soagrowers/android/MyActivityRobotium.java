@@ -31,8 +31,8 @@ public class MyActivityRobotium extends ActivityInstrumentationTestCase2<MyActiv
   }
 
   public void testMyActivityWithRobotium() throws InterruptedException {
-    // check that we have the right activity
-    solo.assertCurrentActivity("wrong activity", MyActivity.class);
+    // check that we have the right mActivity
+    solo.assertCurrentActivity("wrong mActivity", MyActivity.class);
     Assert.assertTrue(solo.searchText(getActivity().getString(R.string.hello_world)));
 
     // Test the 'Click Me' button

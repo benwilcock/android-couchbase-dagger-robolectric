@@ -18,26 +18,18 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
-@Module(
-    injects = MyActivity.class,
-    complete = true
-)
+@Module(library = true,
+        addsTo = BaseActivityModule.class,
+        injects = MyActivity.class)
 public class MyActivityModule {
 
   private static final String DATABASE_NAME = "my_couch_db";
-  Activity activity;
-  Application application;
+  Activity mActivity;
+  Injector mInjector;
 
-  public MyActivityModule(Activity activity) {
-    this.activity = activity;
-    this.application = activity.getApplication();
-  }
-
-  @Provides
-  @Singleton
-  @ForApplication
-  Application provideApplication() {
-    return application;
+  public MyActivityModule(Activity activity, Injector injector) {
+    this.mActivity = activity;
+    this.mInjector = injector;
   }
 
   /**
@@ -45,7 +37,7 @@ public class MyActivityModule {
    */
   @Provides
   @Singleton
-  Manager provideManger(@ForApplication Application application) {
+  Manager provideManger(Application application) {
     Manager manager;
     try {
       manager = new Manager(new AndroidContext(application), Manager.DEFAULT_OPTIONS);

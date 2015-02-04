@@ -10,9 +10,10 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module(
+    addsTo = BaseActivityModule.class,
     injects = {TestMyActivity.class, MyActivityRobolectricTest.class},
     overrides = true,
-    complete = true
+    library = true
 )
 public class TestMyActivityModule {
 
