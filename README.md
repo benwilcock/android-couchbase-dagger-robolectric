@@ -53,7 +53,7 @@ gradlew connectedCheck
 
 ##Known Issues##
 
-For some reason the injection mechanism isn't injecting the 'PersistanceManager' implementation into the Robolectric test at runtime despite the presence of the @Inject annotation and a declaration in the MyTestActivityModule that specified that this class should be injected.
+For some reason the injection mechanism _is not_ injecting the `PersistanceManager` implementation into the Robolectric test at runtime, despite the presence of the `@Inject` annotation and a declaration in the `MyTestActivityModule.java` that specifies that this class should be injected.
 
 However, it does inject the 'Activity's' PersistanceManager with the mock successfully, so a workaround is to use the Activities 'manager' field instead even though this is sub-optimal.
 
