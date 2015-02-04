@@ -1,6 +1,9 @@
 package com.soagrowers.android;
 
+import android.os.Bundle;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TestMyActivity extends MyActivity {
@@ -11,9 +14,14 @@ public class TestMyActivity extends MyActivity {
   }
 
   @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    System.out.println("Creating TestMyActivity.");
+    super.onCreate(savedInstanceState);
+  }
+
+  @Override
   protected List<Object> getModules() {
-    List<Object> result = new ArrayList<>();
-    result.add(new TestMyActivityModule());
-    return result;
+    System.out.println("Getting Modules for TestMyActivity.");
+    return Arrays.<Object>asList(new TestMyActivityModule());
   }
 }

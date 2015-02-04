@@ -45,6 +45,8 @@ public class MyActivityRobolectricTest {
   @Test
   public void testMyActivityAppearsAsExpectedInitially() {
     controller.create().start().resume();
+    activity.inject(this);
+    
     System.out.println("At test field 'manager' is: " + manager);
     System.out.println("In test activity 'manager' is: " + activity.manager);
 
