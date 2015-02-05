@@ -18,11 +18,9 @@ Therefore, in order to support off-device Java VM based testing with [Robolectri
 4. Mockito 1.10.19
 5. Android Studio 1.1 Beta 3
 
-##The Couchbase TDD Sample App##
+##About The Sample App##
 
 The App here is super simple. When the user clicks the **Save** button on the screen, in the background a new document (technically a `java.util.Map`) is created and saved to the embedded Couchbase NoSQL database. While saving the document, Couchbase automatically assigns it an ID and it is this ID that is displayed to the user on the screen after they click the Save button. The document id's in Couchbase take the form of GUID's.
-
-##Approach Taken##
 
 ###The App Code###
 Roughly speaking, in the `app` codebase you'll see the following...
@@ -51,7 +49,7 @@ In the `app-test` gradle project you'll see the following...
 
 ##Running the Sample##
 
-To run the sample just clone or download this repository and then execute the following commands. For completeness, i've included some Instrumentation Tests also (you can run them with `gradlew connectedCheck` assuming an emulator or device is present).
+To run the sample just clone or download [this repository](https://github.com/benwilcock/android-couchbase-dagger-robolectric) and then execute the following commands. For completeness, i've included some Instrumentation Tests also (you can run them with `gradlew connectedCheck` assuming an emulator or device is present).
 
 ```
 gradlew clean
@@ -63,6 +61,14 @@ gradlew connectedCheck (this is optional and assumes a device is present)
 ##Notes##
 Dagger is about to be replaced by Dagger 2.0, but this timeline for release is unclear and has slipped several times last year already, hence the use of Dagger 1.2.2.
 
-##References##
+##Acknowledgements##
 
 Many thanks to Andy Dennie for his [Dagger examples on GitHub](https://github.com/adennie/fb-android-dagger). These were really helpful to this Dagger noob when trying to understand how to integrate Dagger with Android.
+
+##About the Author##
+
+Ben Wilcock is the developer of [TripComputer](https://play.google.com/store/apps/details?id=com.soagrowers.android.tripcomputer) , the only distance tracking app for Android with a battery-saving LOW POWER mode. It’s perfect for cyclists, runners, walkers, hand-gliders, pilots and drivers. It’s free! Download it from the Google Play Store now:-
+
+[Get the App on Google Play](https://play.google.com/store/apps/details?id=com.soagrowers.android.tripcomputer)
+
+You can connect with Ben via his [Blog](http://benwilcock.wordpress.com), [Website](http://www.soagrowers.com), [Twitter](https://twitter.com/benbravo73) or [LinkedIn](http://uk.linkedin.com/in/benwilcock).
