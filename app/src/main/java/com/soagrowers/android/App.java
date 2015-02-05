@@ -9,7 +9,7 @@ import java.util.List;
 import dagger.ObjectGraph;
 
 
-public class App extends Application implements Injector {
+public class App extends Application {
 
   private List<Object> mSeedModules = new ArrayList<Object>();
   private ObjectGraph mObjectGraph;
@@ -36,36 +36,22 @@ public class App extends Application implements Injector {
     }
   }
 
-  /**
-   * Gets this Application's object graph.
-   *
-   * @return the object graph
-   */
-  @Override
+
   public ObjectGraph getObjectGraph() {
     return mObjectGraph;
   }
 
-  /**
-   * Injects a target object using this Application's object graph.
-   *
-   * @param target the target object
-   */
+
   public void inject(Object target) {
     checkState(mObjectGraph != null, "object graph must be initialized prior to calling inject");
     mObjectGraph.inject(target);
   }
 
-  /**
-   * Returns the list of dagger modules to be included in this Application's object graph.
-   * Subclasses that override this method should add to the list returned by super.getModules().
-   *
-   * @return the list of modules
-   */
+
   protected List<Object> getModules() {
     List<Object> result = new ArrayList<Object>();
     result.addAll(mSeedModules);
-    result.add(new AppModule(this, this));
+    result.add(new AppModule(this));
     return result;
   }
 

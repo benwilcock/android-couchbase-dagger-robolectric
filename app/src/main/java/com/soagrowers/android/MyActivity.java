@@ -21,9 +21,7 @@ import dagger.ObjectGraph;
 
 public class MyActivity extends BaseActivity {
 
-  TextView hello_text_view;
   TextView document_id_text_view;
-  Button mClickMeBtn;
   Button mSaveMeBtn;
 
   @Inject
@@ -31,13 +29,13 @@ public class MyActivity extends BaseActivity {
 
   protected List<Object> getModules() {
     List<Object> result = new ArrayList<Object>();
-    result.add(new MyActivityModule(this, this));
+    result.add(new MyActivityModule(this));
     return result;
   }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    ObjectGraph appGraph = ((Injector) getApplication()).getObjectGraph();
+    ObjectGraph appGraph = ((App) getApplication()).getObjectGraph();
     List<Object> activityModules = getModules();
     mObjectGraph = appGraph.plus(activityModules.toArray());
 
@@ -50,14 +48,8 @@ public class MyActivity extends BaseActivity {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.activity_my);
-    hello_text_view = (TextView) findViewById(R.id.hello_text_view);
-    mClickMeBtn = (Button) findViewById(R.id.click_me_button);
     document_id_text_view = (TextView) findViewById(R.id.document_id_text_view);
     mSaveMeBtn = (Button) findViewById(R.id.save_button);
-  }
-
-  public void clickMeBtnPressed(View view) {
-    hello_text_view.setText(getString(R.string.ok_thanks));
   }
 
   public void saveBtnPressed(View view) {

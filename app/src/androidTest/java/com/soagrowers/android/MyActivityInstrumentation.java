@@ -20,25 +20,15 @@ public class MyActivityInstrumentation extends ActivityInstrumentationTestCase2<
   }
 
   @UiThreadTest
-  public void testDaggerHasInjectedThePersistenceManager(){
+  public void testDaggerHasInjectedThePersistenceManager() {
     assertNotNull(mActivity.manager);
   }
 
 
   @UiThreadTest
   public void testMyActivityAppearsAsExpectedInitially() {
-    assertThat(mActivity.hello_text_view).isVisible();
-    assertThat(mActivity.hello_text_view).hasText("Hello world!");
     assertThat(mActivity.document_id_text_view).hasText("Document id goes here after save");
-    assertThat(mActivity.mClickMeBtn).hasText("Click Me");
     assertThat(mActivity.mSaveMeBtn).hasText("Save");
-  }
-
-  @UiThreadTest
-  public void testClickingClickMeButtonChangesHelloWorldText() {
-    assertThat(mActivity.hello_text_view).hasText(R.string.hello_world);
-    mActivity.mClickMeBtn.performClick();
-    assertThat(mActivity.hello_text_view).hasText(R.string.ok_thanks);
   }
 
   @UiThreadTest

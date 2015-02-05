@@ -21,17 +21,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public class BaseActivityModule {
 
   private android.app.Activity mActivity;
-  private Injector mInjector;
 
-  /**
-   * Class constructor.
-   *
-   * @param activity the Activity with which this module is associated.
-   * @param injector the Injector for the Application-scope graph
-   */
-  public BaseActivityModule(android.app.Activity activity, Injector injector) {
+
+  public BaseActivityModule(android.app.Activity activity) {
     mActivity = activity;
-    mInjector = injector;
   }
 
   /**
@@ -46,33 +39,11 @@ public class BaseActivityModule {
     return (Context) mActivity;
   }
 
-  /**
-   * Provides the Activity
-   *
-   * @return the Activity
-   */
   @Provides
   public android.app.Activity provideActivity() {
     return mActivity;
   }
 
-  /**
-   * Provides the Injector for the Activity-scope graph
-   *
-   * @return the Injector
-   */
-  @Provides
-  @Activity
-  public Injector provideActivityInjector() {
-    return mInjector;
-  }
-
-  /**
-   * Defines an qualifier annotation which can be used in conjunction with a type to identify
-   * dependencies within the object graph.
-   *
-   * @see <a href="http://square.github.io/dagger/">the dagger documentation</a>
-   */
   @Qualifier
   @Target({FIELD, PARAMETER, METHOD})
   @Documented

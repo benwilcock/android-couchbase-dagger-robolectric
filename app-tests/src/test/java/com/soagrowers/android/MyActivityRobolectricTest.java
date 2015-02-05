@@ -33,19 +33,10 @@ public class MyActivityRobolectricTest {
   @Test
   public void testMyActivityAppearsAsExpectedInitially() {
     controller.create().start().resume();
-    assertThat(activity.hello_text_view).hasText("Hello world!");
     assertThat(activity.document_id_text_view).hasText("Document id goes here after save");
-    assertThat(activity.mClickMeBtn).hasText("Click Me");
     assertThat(activity.mSaveMeBtn).hasText("Save");
   }
 
-  @Test
-  public void testClickingClickMeButtonChangesHelloWorldText() {
-    controller.create().start().resume();
-    assertThat(activity.hello_text_view).hasText(R.string.hello_world);
-    activity.mClickMeBtn.performClick();
-    assertThat(activity.hello_text_view).hasText(R.string.ok_thanks);
-  }
 
   @Test
   public void testClickingSaveButtonSavesMapAndDisplaysId() {

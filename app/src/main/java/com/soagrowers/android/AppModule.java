@@ -22,11 +22,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public class AppModule {
 
   private App mApp;
-  private Injector mInjector;
 
-  public AppModule(App app, Injector injector) {
+  public AppModule(App app) {
     this.mApp = app;
-    this.mInjector = injector;
   }
 
   @Provides
@@ -40,13 +38,6 @@ public class AppModule {
   @Singleton
   public android.app.Application provideApplication() {
     return mApp;
-  }
-
-  @Provides
-  @Singleton
-  @Application
-  public Injector provideApplicationInjector() {
-    return mInjector;
   }
 
   @Qualifier

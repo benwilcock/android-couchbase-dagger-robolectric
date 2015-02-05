@@ -25,11 +25,9 @@ public class MyActivityModule {
 
   private static final String DATABASE_NAME = "my_couch_db";
   Activity mActivity;
-  Injector mInjector;
 
-  public MyActivityModule(Activity activity, Injector injector) {
+  public MyActivityModule(Activity activity) {
     this.mActivity = activity;
-    this.mInjector = injector;
   }
 
   /**

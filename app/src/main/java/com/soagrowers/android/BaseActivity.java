@@ -7,25 +7,28 @@ import java.util.List;
 
 import dagger.ObjectGraph;
 
-public abstract class BaseActivity extends ActionBarActivity implements Injector {
+public abstract class BaseActivity extends ActionBarActivity {
 
   ObjectGraph mObjectGraph;
 
-  @Override
+
   public final ObjectGraph getObjectGraph() {
     return mObjectGraph;
   }
 
-  @Override
   public void inject(Object target) {
     App.checkState(mObjectGraph != null, "object graph must be assigned prior to calling inject");
     mObjectGraph.inject(target);
   }
 
+  /**
+   * Creates an object graph for this Application using the modules returned by {@link
+   * #getModules()}. <p/> Injects this Application using the created graph.
+   */
   @Override
   protected void onCreate(android.os.Bundle savedInstanceState) {
     // expand the application graph with the mActivity-specific module(s)
-    ObjectGraph appGraph = ((Injector) getApplication()).getObjectGraph();
+    ObjectGraph appGraph = ((App) getApplication()).getObjectGraph();
     List<Object> activityModules = getModules();
     mObjectGraph = appGraph.plus(activityModules.toArray());
 
@@ -46,15 +49,10 @@ public abstract class BaseActivity extends ActionBarActivity implements Injector
     super.onDestroy();
   }
 
-  /**
-   * Returns the list of dagger modules to be included in this ActionBarActivity's object graph.
-   * Subclasses that override this method should add to the list returned by super.getModules().
-   *
-   * @return the list of modules
-   */
+
   protected List<Object> getModules() {
     List<Object> result = new ArrayList<Object>();
-    result.add(new BaseActivityModule(this, this));
+    result.add(new BaseActivityModule(this));
     return result;
   }
 }
