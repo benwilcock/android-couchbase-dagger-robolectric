@@ -6,7 +6,7 @@ This Android / Gradle project integrates Couchbase, Robolectric and Dagger so th
 
 I need a database for my [TripComputer app](https://play.google.com/store/apps/details?id=com.soagrowers.android.tripcomputer) so that users can keep a log of their Journeys. I could use SQL Lite, but I prefer not to use SQL if possible because you're forced to maintain a fixed schema and because SQL Lite doesn't have any out of the box data replication capabilities.
 
-[Couchbase for android](http://developer.couchbase.com/mobile/get-started/get-started-mobile/android/index.html) is a great option, but because Couchbase lite's Database manager is *Final* and requires native code, it's not easy mock or to integrate with Robolectric (the popular Android simulation API).
+[Couchbase Lite for Android](http://developer.couchbase.com/mobile/get-started/get-started-mobile/android/index.html) is a great alternative to SQL Lite, but because Couchbase's Database manager is *Final* and requires native code, it's not easy mock or to integrate with Robolectric (the popular Android simulation API).
 
 Therefore, in order to support off-device Java VM based testing with [Robolectric](http://robolectric.org) it is necessary to write custom interfaces and use a dependency injection framework that will allow the injection of mock objects when testing. To achieve this 'dependency injection', I've introduced the [Dagger](https://github.com/square/dagger) framework into the code.
 
