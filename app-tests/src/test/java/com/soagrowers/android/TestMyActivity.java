@@ -26,9 +26,6 @@ public class TestMyActivity extends MyActivity {
       library = true
   )
   class TestMyActivityModule {
-
-    private PersistenceManager mockManager;
-
     @Provides
     @Singleton
     public PersistenceManager providePersistenceManager() {
